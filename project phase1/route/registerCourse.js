@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const { readJSON, writeJSON } = require('../utils/fileUtils');
+const { readJSON, writeJSON } = require('../files/files');
+
 
 
 
@@ -78,3 +79,5 @@ router.get('/learning-path/:studentId', async (req, res) => {
         pending_courses: pending
     });
 });
+
+module.exports = router;

@@ -35,3 +35,24 @@ router.post('/assign-instructor', async (req, res) => {
 });
 
 module.exports = router;
+
+router.get('/schedule', async (req, res) => {
+  const classes = await readJSON('classes.json');
+  const courses = await readJSON('courses.json');
+  const users = await readJSON('users.json');
+  const activeClasses = classes.filter(cls => cls.enrolled_students.length > 0);
+  const schedule = activeClasses.map(cls => {
+    const course = courses.find(c => c.id === cls.course_id);
+    const instructor = users.find(u => u.id === cls.instructor_id);
+    return {
+      course_id: cls.course_id,
+      course_name: course?.name || "undefined",
+      instructor_name: instructor?.name || "undefined",
+      day: cls.schedule?.day || "undefined",
+      time: cls.schedule?.time || "undefined"
+    };
+  });
+
+  res.json({ schedule });
+});
+

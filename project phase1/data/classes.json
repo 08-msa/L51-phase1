@@ -5,6 +5,10 @@
       "enrolled_students": [],
       "pending_students": [],
       "capacity": 30,
-      "validated": false
+      "validated": true,
+      "schedule": {
+        "day": "Monday",
+        "time": "10:00 AM - 12:00 PM"
+      }
     }
   ]  

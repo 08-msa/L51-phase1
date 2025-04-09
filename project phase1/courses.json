@@ -1,0 +1,26 @@
+[
+    {
+      "id": "CS101",
+      "name": "Introduction to Computer Science",
+      "category": "Programming",
+      "description": "Learn the basics of computer science and programming concepts."
+    },
+    {
+      "id": "CS102",
+      "name": "Data Structures",
+      "category": "Programming",
+      "description": "Explore fundamental data structures such as arrays, stacks, and queues."
+    },
+    {
+      "id": "DB101",
+      "name": "Database Systems",
+      "category": "Databases",
+      "description": "An introduction to relational databases and SQL."
+    },
+    {
+      "id": "WD101",
+      "name": "Web Development",
+      "category": "Programming",
+      "description": "Learn how to build dynamic web applications."
+    }
+]

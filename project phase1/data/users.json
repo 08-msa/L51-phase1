@@ -1,10 +1,26 @@
 [
   {
     "username": "student1",
-    "password": "pass123"
+    "password": "pass123",
+    "id": "S1001",
+    "type": "student",
+    "name": "Student One",
+    "completed_courses": []
   },
   {
     "username": "instructor1",
-    "password": "pass456"
+    "password": "pass456",
+    "id": "I1001",
+    "type": "instructor",
+    "name": "Instructor One",
+    "expertise": ["Programming"],
+    "interested_courses": []
+  },
+  {
+    "username": "admin1",
+    "password": "adminpass",
+    "id": "A1001",
+    "type": "admin",
+    "name": "Admin One"
   }
 ]

@@ -4,9 +4,13 @@ const fs = require('fs');
 const path = require('path');
 const app = express();
 
+const adminRoutes = require('./route/adminRoutes');
+
 app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use('/admin', adminRoutes);
 
 // POST /login - Login endpoint
 app.post('/login', (req, res) => {

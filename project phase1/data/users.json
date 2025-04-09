@@ -1,14 +1,10 @@
 [
-    {
-      "id": "S1001",
-      "name": "Aisha",
-      "type": "student",
-      "username": "aisha",
-      "password": "1234",
-      "completed_courses": [
-        {"course_id": "C101", "grade": 85},
-        {"course_id": "C102", "grade": 78}
-      ]
-    }
-  ]
-  
+  {
+    "username": "student1",
+    "password": "pass123"
+  },
+  {
+    "username": "instructor1",
+    "password": "pass456"
+  }
+]

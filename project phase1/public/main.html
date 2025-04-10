@@ -1,25 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Main Page</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Available Courses</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
-    <h1>Available Courses</h1>
+    <div class="container">
+      <h1>🎓 Explore Our Courses</h1>
+      <p>Search by name or category to find what suits you best</p>
+    </div>
   </header>
-  <section class="search-container">
-    <form id="searchForm">
-      <input type="text" id="searchName" placeholder="Search by course name ">
-      <input type="text" id="searchCategory" placeholder="Search by category ">
-      <button type="submit">Search</button>
-    </form>
-  </section>
-  <section id="coursesContainer">
-    <!-- Courses will be listed here -->
-  </section>
+
+  <main class="container">
+    <section class="search-section">
+      <form id="searchForm" class="search-form">
+        <input type="text" id="searchName" placeholder="Course Name" />
+        <input type="text" id="searchCategory" placeholder="Category" />
+        <button type="submit">🔍 Search</button>
+      </form>
+    </section>
+
+    <section id="coursesContainer" class="course-grid">
+      <div class="course-card">
+        <h3>Web Development</h3>
+        <p><strong>Category:</strong> Technology</p>
+        <p><strong>Duration:</strong> 6 weeks</p>
+      </div>
+      <div class="course-card">
+        <h3>Graphic Design</h3>
+        <p><strong>Category:</strong> Art & Design</p>
+        <p><strong>Duration:</strong> 4 weeks</p>
+      </div>
+    </section>
+  </main>
+
   <script src="main.js"></script>
 </body>
 </html>

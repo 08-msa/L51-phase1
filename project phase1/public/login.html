@@ -1,27 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Login - Student Management App</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="login-container">
-    <h2>Login</h2>
-    <form id="loginForm">
-      <div>
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
+  <header>
+    <h1>Welcome Back</h1>
+    <p>Please login to continue</p>
+  </header>
+
+  <section class="form-section">
+    <form id="loginForm" class="form-card">
+      <h2 class="form-title">Login</h2>
+      
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required />
       </div>
-      <div>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required />
       </div>
-      <button type="submit">Login</button>
+
+      <button type="submit" class="primary-button">Login</button>
+      <div id="errorMsg" class="error-message"></div>
     </form>
-    <div id="errorMsg" class="error-message"></div>
-  </div>
+  </section>
+
   <script src="login.js"></script>
 </body>
 </html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instructor Dashboard</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Instructor Dashboard</h1>
+        <nav>
+            <button id="logout-btn">Logout</button>
+        </nav>
+    </header>
+
+    <main>
+        <section id="teaching-courses">
+            <h2>My Courses</h2>
+            <div class="course-list" id="instructor-courses"></div>
+        </section>
+
+        <section id="grade-submission" class="hidden">
+            <h2>Grade Submission</h2>
+            <div id="grade-form-container"></div>
+        </section>
+    </main>
+
+    <script src="/js/instructor.js"></script>
+</body>
+</html>

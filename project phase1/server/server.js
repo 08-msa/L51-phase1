@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const app = express();
 
-const adminRoutes = require('./route/adminRoutes');
+const adminRoutes = require('../route/adminRoutes');
 
 app.use(express.static('public'));
 app.use(bodyParser.json());
@@ -16,7 +16,7 @@ app.use('/admin', adminRoutes);
 app.post('/login', (req, res) => {
     console.log('Received login request:', req.body); // Debug
   
-    fs.readFile(path.join(__dirname, 'users.json'), 'utf8', (err, data) => {
+    fs.readFile(path.join(__dirname,'public','data', 'users.json'), 'utf8', (err, data) => {
       if (err) {
         console.error('Error reading users file:', err);
         return res.status(500).send({ success: false, message: 'Server error' });
@@ -51,7 +51,7 @@ app.get('/courses', (req, res) => {
     const searchName = req.query.name ? req.query.name.toLowerCase() : null;
     const searchCategory = req.query.category ? req.query.category.toLowerCase() : null;
     
-    fs.readFile(path.join(__dirname, 'courses.json'), 'utf8', (err, data) => {
+    fs.readFile(path.join(__dirname,'public','data', 'courses.json'), 'utf8', (err, data) => {
       if (err) {
          console.error('Error reading courses file:', err);
          return res.status(500).send({ success: false, message: 'Server error' });

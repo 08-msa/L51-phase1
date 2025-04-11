@@ -1,13 +1,13 @@
 const express = require('express');
 
 const app = express();
-const studentRoutes = require('./route/registerCourse'); 
+const studentRoutes = require('../route/registerCourse'); 
 
 app.use(express.json());
 app.use('/student', studentRoutes);
 app.use(express.static('public'));
 
-const adminRoutes = require('./route/adminRoutes');
+const adminRoutes = require('../route/adminRoutes');
 app.use('/admin', adminRoutes);
 
 

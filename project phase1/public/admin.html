@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Admin Dashboard</h1>
+        <nav>
+            <button id="logout-btn">Logout</button>
+        </nav>
+    </header>
+
+    <main>
+        <section id="course-management">
+            <h2>Course Management</h2>
+            
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="pending">Pending Approval</button>
+                <button class="tab-btn" data-tab="active">Active Courses</button>
+                <button class="tab-btn" data-tab="create">Create New</button>
+            </div>
+
+            <div class="tab-content" id="pending-tab">
+                <h3>Courses Pending Approval</h3>
+                <div class="course-list" id="pending-courses"></div>
+            </div>
+
+            <div class="tab-content hidden" id="active-tab">
+                <h3>Active Courses</h3>
+                <div class="course-list" id="active-courses"></div>
+            </div>
+
+            <div class="tab-content hidden" id="create-tab">
+                <h3>Create New Course</h3>
+                <form id="create-course-form">
+                    <div class="form-group">
+                        <label for="course-name">Course Name:</label>
+                        <input type="text" id="course-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="course-code">Course Code:</label>
+                        <input type="text" id="course-code" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="course-category">Category:</label>
+                        <select id="course-category" required>
+                            <option value="Programming">Programming</option>
+                            <option value="Databases">Databases</option>
+                            <option value="Networking">Networking</option>
+                            <option value="Security">Security</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="course-prerequisites">Prerequisites (comma separated):</label>
+                        <input type="text" id="course-prerequisites">
+                    </div>
+                    <button type="submit">Create Course</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <script src="/js/admin.js"></script>
+</body>
+</html>

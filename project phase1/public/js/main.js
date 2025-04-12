@@ -1,6 +1,6 @@
 function displayCourses(courses) {
   const container = document.getElementById('coursesContainer');
-  container.innerHTML = ''; 
+  container.innerHTML = '';
 
   if (!Array.isArray(courses) || courses.length === 0) {
     container.innerHTML = '<p class="no-courses">No courses found.</p>';
@@ -10,12 +10,23 @@ function displayCourses(courses) {
   courses.forEach(course => {
     const courseCard = document.createElement('div');
     courseCard.className = 'course-card';
+
     courseCard.innerHTML = `
       <h3>${course.name}</h3>
       <p><strong>Category:</strong> ${course.category}</p>
       <p>${course.description}</p>
+      <button class="apply-button" data-code="${course.code}">Apply</button>
     `;
+
     container.appendChild(courseCard);
+  });
+
+  // Add event listeners to the apply buttons
+  document.querySelectorAll('.apply-button').forEach(button => {
+    button.addEventListener('click', function () {
+      const courseCode = this.getAttribute('data-code');
+      window.location.href = `apply.html?courseCode=${courseCode}`;
+    });
   });
 }
 

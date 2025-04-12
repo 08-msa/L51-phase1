@@ -18,7 +18,6 @@ document.getElementById('loginForm').addEventListener('submit', function(e) {
     })
     .then(data => {
       if (data.success) {
-        // Redirect to main page on successful login
         window.location.href = '/main';
       } else {
         document.getElementById('errorMsg').textContent = data.message;

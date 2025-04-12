@@ -10,16 +10,17 @@ function displayCourses(courses) {
   courses.forEach(course => {
     const courseCard = document.createElement('div');
     courseCard.className = 'course-card';
-
     courseCard.innerHTML = `
-      <h3>${course.name}</h3>
-      <p><strong>Category:</strong> ${course.category}</p>
-      <p>${course.description}</p>
-      <button class="apply-button" data-code="${course.code}">Apply</button>
+      <a href="apply.html?courseCode=${course.code}">
+        <h3>${course.name}</h3>
+        <p><strong>Category:</strong> ${course.category}</p>
+        <p>${course.description}</p>
+      </a>
     `;
-
     container.appendChild(courseCard);
   });
+}
+
 
   // Add event listeners to the apply buttons
   document.querySelectorAll('.apply-button').forEach(button => {
@@ -28,7 +29,7 @@ function displayCourses(courses) {
       window.location.href = `apply.html?courseCode=${courseCode}`;
     });
   });
-}
+
 
 function fetchCourses() {
   const container = document.getElementById('coursesContainer');

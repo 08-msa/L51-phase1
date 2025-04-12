@@ -157,3 +157,15 @@ app.get('/learning-path', (req, res) => {
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });
+app.get('/session', (req, res) => {
+  // This should come from actual session logic
+  const session = {
+    loggedIn: true,
+    student: {
+      id: 'stu1',
+      name: 'Ali',
+      completed: ['CS101']
+    }
+  };
+  res.json(session);
+});

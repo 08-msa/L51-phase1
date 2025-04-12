@@ -1,0 +1,9 @@
+{
+    "loggedIn": true,
+    "student": {
+      "id": "stu1",
+      "name": "Ali",
+      "completed": ["CS101"]
+    }
+  }
+  

@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Logout button
     document.getElementById('logout-btn').addEventListener('click', () => {
-        window.location.href = '/login.html';
+        window.location.href = 'public/login.html';
     });
 
     // Create course form

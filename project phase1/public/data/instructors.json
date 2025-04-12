@@ -1,0 +1,15 @@
+[
+    {
+      "id": "in1zyad",
+      "name": "Zyad",
+      "maxCapacity": 3,
+      "currentStudents": 0
+    },
+    {
+      "id": "in2ali",
+      "name": "Ali",
+      "maxCapacity": 2,
+      "currentStudents": 1
+    }
+  ]
+  

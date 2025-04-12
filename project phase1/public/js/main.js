@@ -1,7 +1,6 @@
-// Function to display courses in the courses container
 function displayCourses(courses) {
   const container = document.getElementById('coursesContainer');
-  container.innerHTML = ''; // Clear any previous content
+  container.innerHTML = ''; 
 
   if (!Array.isArray(courses) || courses.length === 0) {
     container.innerHTML = '<p class="no-courses">No courses found.</p>';
@@ -20,24 +19,19 @@ function displayCourses(courses) {
   });
 }
 
-// Function to fetch courses from the server
-function fetchCourses(queryParams = '') {
+function fetchCourses() {
   const container = document.getElementById('coursesContainer');
   container.innerHTML = '<p>Loading courses...</p>';
 
-  fetch('/courses' + queryParams)
+  fetch('./data/courses.json')
     .then(response => {
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
       return response.json();
     })
-    .then(data => {
-      if (data.success && Array.isArray(data.courses)) {
-        displayCourses(data.courses);
-      } else {
-        container.innerHTML = '<p class="no-courses">No courses found.</p>';
-      }
+    .then(courses => {
+      displayCourses(courses);
     })
     .catch(error => {
       console.error('Error fetching courses:', error);
@@ -45,24 +39,38 @@ function fetchCourses(queryParams = '') {
     });
 }
 
-// Handle search form submission
+// filter courses based on search criteria
+function filterCourses(name, category) {
+  const container = document.getElementById('coursesContainer');
+  container.innerHTML = '<p>Filtering courses...</p>';
+  fetch('./data/courses.json')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(courses => {
+      const filteredCourses = courses.filter(course => {
+        const matchName = name ? course.name.toLowerCase().includes(name.toLowerCase()) : true;
+        const matchCategory = category ? course.category.toLowerCase().includes(category.toLowerCase()) : true;
+        return matchName && matchCategory;
+      });
+      displayCourses(filteredCourses);
+    })
+    .catch(error => {
+      console.error('Error filtering courses:', error);
+      container.innerHTML = '<p class="error">An error occurred while filtering courses. Please try again later.</p>';
+    });
+}
+
 document.getElementById('searchForm').addEventListener('submit', function (e) {
   e.preventDefault();
 
   const name = document.getElementById('searchName').value.trim();
   const category = document.getElementById('searchCategory').value.trim();
-  const queryParams = [];
 
-  if (name) {
-    queryParams.push('name=' + encodeURIComponent(name));
-  }
-  if (category) {
-    queryParams.push('category=' + encodeURIComponent(category));
-  }
-
-  const queryString = queryParams.length ? '?' + queryParams.join('&') : '';
-  fetchCourses(queryString);
+  filterCourses(name, category);
 });
 
-// Initial fetch of all courses on page load
 document.addEventListener('DOMContentLoaded', fetchCourses);

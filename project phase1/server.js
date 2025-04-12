@@ -169,3 +169,60 @@ app.get('/session', (req, res) => {
   };
   res.json(session);
 });
+function displayCourses(courses) {
+  const container = document.getElementById('coursesContainer');
+  container.innerHTML = '';
+
+  if (!courses.length) {
+      container.innerHTML = '<p>No courses found.</p>';
+      return;
+  }
+
+  courses.forEach(course => {
+      const div = document.createElement('div');
+      div.className = 'course-card';
+
+      let classDetailsHTML = '<p><em>No class info available</em></p>';
+      if (course.classDetails) {
+          classDetailsHTML = `
+              <p><strong>Schedule:</strong> ${course.classDetails.schedule.day}, ${course.classDetails.schedule.time}</p>
+              <p><strong>Capacity:</strong> ${course.classDetails.capacity}</p>
+              <p><strong>Enrolled Students:</strong> ${course.classDetails.enrolledCount}</p>
+              <p><strong>Pending Students:</strong> ${course.classDetails.pendingCount}</p>
+              <p><strong>Validated:</strong> ${course.classDetails.validated ? 'Yes' : 'No'}</p>
+          `;
+      }
+
+      div.innerHTML = `
+          <h3>${course.name}</h3>
+          <p><strong>Category:</strong> ${course.category}</p>
+          <p>${course.description}</p>
+          <p><strong>Instructor:</strong> ${course.instructor}</p>
+          ${classDetailsHTML}
+          <button class="apply-btn" data-course="${course.code}">Apply</button>
+      `;
+
+      container.appendChild(div);
+  });
+
+  // Add event listeners to the Apply buttons
+  document.querySelectorAll('.apply-btn').forEach(button => {
+      button.addEventListener('click', async (e) => {
+          const courseCode = e.target.dataset.course;
+
+          try {
+              const res = await fetch('/apply-course', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ courseCode })
+              });
+
+              const result = await res.json();
+              alert(result.message);
+          } catch (err) {
+              alert('Error applying to course.');
+              console.error(err);
+          }
+      });
+  });
+}

@@ -1,14 +1,26 @@
 [
-    {
-      "course_id": "C103",
-      "instructor_id": "I200",
-      "enrolled_students": [],
-      "pending_students": [],
-      "capacity": 30,
-      "validated": true,
-      "schedule": {
-        "day": "Monday",
-        "time": "10:00 AM - 12:00 PM"
-      }
+  {
+    "course_id": "CS101",
+    "instructor_id": "in1zyad",
+    "enrolled_students": [],
+    "pending_students": [],
+    "capacity": 30,
+    "validated": true,
+    "schedule": {
+      "day": "Monday",
+      "time": "10:00 AM - 12:00 PM"
     }
-  ]  
+  },
+  {
+    "course_id": "CS102",
+    "instructor_id": "in1zyad",
+    "enrolled_students": [],
+    "pending_students": [],
+    "capacity": 25,
+    "validated": true,
+    "schedule": {
+      "day": "Tuesday",
+      "time": "1:00 PM - 3:00 PM"
+    }
+  }
+]

@@ -43,22 +43,28 @@ app.get('/main', (req, res) => {
 
 // GET: /courses
 app.get('/courses', (req, res) => {
-    const { name, category } = req.query;
-    fs.readFile(path.join(__dirname, 'public/data/courses.json'), 'utf8', (err, data) => {
-        if (err) return res.status(500).send({ success: false, message: 'Server error' });
-
-        let courses = JSON.parse(data);
-        if (name || category) {
-            courses = courses.filter(course => {
-                return (!name || course.name.toLowerCase().includes(name.toLowerCase())) &&
-                       (!category || course.category.toLowerCase().includes(category.toLowerCase()));
-            });
-        }
-
-        res.send({ success: true, courses });
+    const coursesFile = path.join(__dirname, 'public/data/courses.json');
+    console.log('📂 Reading:', coursesFile); // Confirm path
+  
+    fs.readFile(coursesFile, 'utf8', (err, data) => {
+      if (err) {
+        console.error('❌ Error reading courses.json:', err);
+        return res.status(500).send({ success: false, message: 'Server error reading courses.json' });
+      }
+  
+      let courses;
+      try {
+        courses = JSON.parse(data);
+      } catch (parseError) {
+        console.error('❌ Error parsing courses.json:', parseError);
+        return res.status(500).send({ success: false, message: 'Invalid JSON in courses.json' });
+      }
+  
+      console.log('✅ Courses loaded:', courses.length);
+      res.send({ success: true, courses });
     });
-});
-
+  });
+  
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });

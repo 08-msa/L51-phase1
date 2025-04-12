@@ -1,26 +1,26 @@
 [
   {
-    "username": "student1",
-    "password": "pass123",
+    "username": "s1Ahmed",
+    "password": "st123",
     "id": "S1001",
     "type": "student",
-    "name": "Student One",
+    "name": "Ahmed ali",
     "completed_courses": []
   },
   {
-    "username": "instructor1",
-    "password": "pass456",
+    "username": "in1zyad",
+    "password": "in123",
     "id": "I1001",
     "type": "instructor",
-    "name": "Instructor One",
+    "name": "zyad ali",
     "expertise": ["Programming"],
     "interested_courses": []
   },
   {
-    "username": "admin1",
-    "password": "adminpass",
+    "username": "ad1sara",
+    "password": "ad123",
     "id": "A1001",
     "type": "admin",
-    "name": "Admin One"
+    "name": "sara ali"
   }
 ]

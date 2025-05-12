@@ -1,0 +1,67 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite" // change to "postgresql" or "mysql" if needed
+  url      = env("DATABASE_URL")
+}
+
+model Student {
+  id               Int      @id @default(autoincrement())
+  username         String   @unique
+  password         String
+  name             String
+  completedCourses Course[] @relation("CompletedCourses", references: [id])
+  enrolledClasses  Class[]  @relation("EnrolledStudents", references: [id])
+}
+
+model Instructor {
+  id              Int     @id @default(autoincrement())
+  username        String  @unique
+  password        String
+  name            String
+  expertise       String
+  interestedCourses Course[] @relation("InterestedCourses", references: [id])
+  classes         Class[]
+}
+
+model Admin {
+  id       Int    @id @default(autoincrement())
+  username String @unique
+  password String
+  name     String
+}
+
+model Course {
+  id            Int       @id @default(autoincrement())
+  code          String    @unique
+  name          String
+  category      String
+  status        String    // active or rejected
+  prerequisites Course[]  @relation("Prerequisites")
+  classes       Class[]
+  students      Student[] @relation("CompletedCourses")
+  instructor    Instructor? @relation(fields: [instructorId], references: [id])
+  instructorId  Int?
+}
+
+model Class {
+  id           Int       @id @default(autoincrement())
+  course       Course    @relation(fields: [courseId], references: [id])
+  courseId     Int
+  instructor   Instructor @relation(fields: [instructorId], references: [id])
+  instructorId Int
+  capacity     Int
+  validated    Boolean
+  scheduleDay  String
+  scheduleTime String
+  students     Student[] @relation("EnrolledStudents")
+}
+

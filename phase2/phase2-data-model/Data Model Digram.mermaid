@@ -1,0 +1,41 @@
+erDiagram
+    Student ||--o{ Enrollment : "has"
+    Student {
+        int id PK
+        string name
+        string email
+        string major
+        int year
+    }
+    
+    Course ||--o{ Class : "is offered as"
+    Course {
+        int id PK
+        string code
+        string title
+        int creditHours
+    }
+    
+    Instructor ||--o{ Class : "teaches"
+    Instructor {
+        int id PK
+        string name
+        string department
+        string email
+    }
+    
+    Class ||--o{ Enrollment : "contains"
+    Class {
+        int id PK
+        string semester
+        string schedule
+        int courseId FK
+        int instructorId FK
+    }
+    
+    Enrollment {
+        int id PK
+        int studentId FK
+        int classId FK
+        string grade
+    }
